@@ -129,7 +129,7 @@ func TestCPUCosts(t *testing.T) {
 					"container": {"", "POD"},
 					"node":      {""},
 				}
-				promCPURequestedInput.AggregateBy = []string{"container", "pod", "namespace", "node"}
+				promCPURequestedInput.AggregateBy = []string{"container", "pod", "namespace", "node", "uid"}
 				promCPURequestedInput.Function = []string{"avg_over_time", "avg"}
 				promCPURequestedInput.QueryWindow = windowRange
 				promCPURequestedInput.Time = &endTime
@@ -160,7 +160,7 @@ func TestCPUCosts(t *testing.T) {
 					"container": {"", "POD"},
 					"node":      {""},
 				}
-				promCPUAllocatedInput.AggregateBy = []string{"container", "pod", "namespace", "node"}
+				promCPUAllocatedInput.AggregateBy = []string{"container", "pod", "namespace", "node", "uid"}
 				promCPUAllocatedInput.Function = []string{"avg_over_time", "avg"}
 				promCPUAllocatedInput.QueryWindow = windowRange
 				promCPUAllocatedInput.Time = &endTime
@@ -183,7 +183,7 @@ func TestCPUCosts(t *testing.T) {
 					"namespace": namespace,
 				}
 				promPodInfoInput.MetricNotEqualTo = "0"
-				promPodInfoInput.AggregateBy = []string{"container", "pod", "namespace", "node"}
+				promPodInfoInput.AggregateBy = []string{"container", "pod", "namespace", "node", "uid"}
 				promPodInfoInput.Function = []string{"avg"}
 				promPodInfoInput.AggregateWindow = windowRange
 				promPodInfoInput.AggregateResolution = cpuCorevsCpuRequestResolution
